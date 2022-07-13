@@ -1,18 +1,33 @@
 ////////// TO DO ///////////////
 // Add item manip functionality
 // Research api's to better suit searches and filtering
+// https://github.com/zt3h/MaroAPI/blob/main/src/constants/misc.js
+// https://github.com/kr45732/rust-query-api/blob/main/examples/examples.md
+// https://query-api.herokuapp.com/query?key=&bin=true&item_id=FLOWER_OF_TRUTH&tier=LEGENDARY&item_name=%%E2%9C%AA%E2%9C%AA%E2%9C%AA%E2%9C%AA%E2%9C%AA%&sort=ASC&limit=50
 
 const { compareItems } = require('../compare/compare_functions');
 const { scanItems } = require('../underbin_scan/scan_functions');
 const { getBinInfo } = require('../present_bin/presentBin_functions');
+const { hypixel } = require('../api/rebornapi');
 
 const superagent = require('superagent');
 const inquirer = require('inquirer');
 const readline = require('readline');
 const chalk = require('chalk');
 
-
 async function initialPrompt() {
+
+    hypixel.getPlayer('MidsOnly').then(player => {
+        console.log(player.level); // 141
+      }).catch(e => {
+        console.error(e);
+      })
+    
+      hypixel.Auction(1, true).then(data => {
+        console.log(data); // "FLOWER_OF_TRUTH"]);
+      }).catch(e => {
+        console.error(e);
+      });
 
     let comparing = false;
 

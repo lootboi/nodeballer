@@ -1,8 +1,1 @@
-/target
-*.log
-dev
-.DS_Store
-.env
-lowestbin.json
-underbin.json
-query_items.json
+node_modules
