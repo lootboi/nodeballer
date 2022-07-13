@@ -10,7 +10,7 @@ L
 ```bash
 gh repo clone lootboi/nodeballer
 ```
-Or use SSH
+Or use SSH (Reccomended)
 
 ## 2. Setup
 

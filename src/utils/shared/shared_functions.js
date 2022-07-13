@@ -8,7 +8,6 @@
 const { compareItems } = require('../compare/compare_functions');
 const { scanItems } = require('../underbin_scan/scan_functions');
 const { getBinInfo } = require('../present_bin/presentBin_functions');
-const { hypixel } = require('../api/rebornapi');
 
 const superagent = require('superagent');
 const inquirer = require('inquirer');
@@ -16,18 +15,6 @@ const readline = require('readline');
 const chalk = require('chalk');
 
 async function initialPrompt() {
-
-    hypixel.getPlayer('MidsOnly').then(player => {
-        console.log(player.level); // 141
-      }).catch(e => {
-        console.error(e);
-      })
-    
-      hypixel.Auction(1, true).then(data => {
-        console.log(data); // "FLOWER_OF_TRUTH"]);
-      }).catch(e => {
-        console.error(e);
-      });
 
     let comparing = false;
 
@@ -64,7 +51,7 @@ async function initialPrompt() {
   }
 
 async function defineItem(comparing) {
-console.log(comparing);
+;
 var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -82,7 +69,7 @@ var rl = readline.createInterface({
 }
 
 async function defineTier(item, comparing) {
-console.log(comparing);
+;
 inquirer
 .prompt([
 {
@@ -110,7 +97,7 @@ let tier = '';
 }
 
 async function defineStars(item, tier, comparing) {
-    console.log(comparing);
+    ;
 let stars = '';
 inquirer
 .prompt([
@@ -149,7 +136,7 @@ inquirer
 }
 
 async function checkItem(item, comparing) {
-    console.log(comparing);
+    ;
     superagent.get('https://query-api.herokuapp.com/query')
     .query({
     bin: true,
@@ -167,7 +154,7 @@ async function checkItem(item, comparing) {
 }
 
 async function checkTier(item, tier, comparing) {
-    console.log(comparing);
+    ;
     superagent.get('https://query-api.herokuapp.com/query')
         .query({
             bin: true,
@@ -186,7 +173,7 @@ async function checkTier(item, tier, comparing) {
         }
 
   async function checkStars(item, tier, stars, comparing) {
-    console.log(comparing);
+    ;
     console.log('Finding items that match your query...');
     superagent.get('https://query-api.herokuapp.com/query')
     .query({
@@ -199,7 +186,7 @@ async function checkTier(item, tier, comparing) {
         console.log(res.body);
           if(err) { return console.log(err); }
           console.log(chalk.green('  Items found!'));
-          console.log(comparing);
+          ;
             if(res.body.length > 0 && comparing === true) {
                 console.log('Getting comparison Data...');
                 getComparisonData(item, tier, stars);

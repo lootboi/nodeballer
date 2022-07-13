@@ -5,7 +5,7 @@ const chalk = require('chalk');
 // const { defineItem } = require('../shared/shared_functions');
 
 async function compareItems(comparing) {
-    console.log(comparing)
+    
     await defineItem(comparing);
 }
 
